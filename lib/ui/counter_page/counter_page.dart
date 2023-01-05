@@ -11,58 +11,46 @@ class CounterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     CounterCubit counterCubit = CounterCubit(10);
 
-    return BlocProvider(
-      create: (context) => counterCubit,
-      child: Scaffold(
-          appBar: AppBar(),
-          body: Column(
-            children: [
-              // BlocBuilder<CounterCubit, int>(builder: (context, state) {
-              //   return Text(
-              //     "${state.toString()}  va ${NumberFormat.decimalPattern('uz_UZ').format(1000000)}",
-              //     style: const TextStyle(
-              //       fontSize: 40,
-              //       fontWeight: FontWeight.w700,
-              //     ),
-              //   );
-              // }),
-              BlocBuilder<CounterCubit, int>(
-                  builder: (context, state) {
-                return Column(
-                  children: [
-                    Text(
-                      "${state.toString()}",
-                      style: const TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w700,
-                      ),
+    return Scaffold(
+        appBar: AppBar(),
+        body: Column(
+          children: [
+            BlocBuilder<CounterCubit, int>(
+                builder: (context, state) {
+              return Column(
+                children: [
+                  Text(
+                    "${state.toString()}",
+                    style: const TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w700,
                     ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context).increment();
-                          },
-                          icon: Icon(Icons.add),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            BlocProvider.of<CounterCubit>(context).decrement();
-                          },
-                          icon: Icon(Icons.remove),
-                        )
-                      ],
-                    )
-                  ],
-                );
-              }),
-            ],
-          )),
-    );
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          BlocProvider.of<CounterCubit>(context).increment();
+                        },
+                        icon: Icon(Icons.add),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          BlocProvider.of<CounterCubit>(context).decrement();
+                        },
+                        icon: Icon(Icons.remove),
+                      )
+                    ],
+                  )
+                ],
+              );
+            }),
+          ],
+        ));
     // });
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:working_with_bloc/bloc/calculator/calculator_state.dart';
 
 class CalculatorCubit extends Cubit<CalculatorState> {
-  CalculatorCubit() : super(InitialState(a: 10, b: 15));
+  CalculatorCubit() : super(InitialState());
 
   add(int a, int b) {
     emit(AdditionState(a + b));

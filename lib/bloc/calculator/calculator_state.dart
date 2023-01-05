@@ -1,13 +1,7 @@
 abstract class CalculatorState {}
 
 class InitialState extends CalculatorState {
-  InitialState({
-    required this.a,
-    required this.b,
-  });
 
-  final int a;
-  final int b;
 }
 
 class AdditionState extends CalculatorState {
