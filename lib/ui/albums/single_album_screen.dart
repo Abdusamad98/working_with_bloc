@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:working_with_bloc/bloc/album/album_cubit.dart';
+import 'package:working_with_bloc/bloc/album/album_event.dart';
 import 'package:working_with_bloc/bloc/album/album_state.dart';
-import 'package:working_with_bloc/data/api_service/api_service.dart';
 import 'package:working_with_bloc/data/repositories/album_repo.dart';
 
 class SingleAlbumScreen extends StatelessWidget {
@@ -13,10 +13,11 @@ class SingleAlbumScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AlbumCubit>(
-      create: (context) => AlbumCubit(AlbumRepos(apiService: ApiService()))..fetchSingleAlbum(id),
+      create: (context) =>
+          AlbumCubit(context.read<AlbumRepos>())..add(FetchSingleAlbum(id: id)),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Deatiled Page"),
+          title: const Text("Deatiled Page"),
         ),
         body: BlocBuilder<AlbumCubit, AlbumState>(builder: (context, state) {
           // context.read<AlbumCubit>().fetchSingleAlbum(id);

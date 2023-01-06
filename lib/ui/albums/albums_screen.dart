@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:working_with_bloc/bloc/album/album_cubit.dart';
+import 'package:working_with_bloc/bloc/album/album_event.dart';
 import 'package:working_with_bloc/bloc/album/album_state.dart';
 import 'package:working_with_bloc/ui/albums/single_album_screen.dart';
 import 'package:working_with_bloc/utils/my_utils.dart';
@@ -17,14 +18,15 @@ class AlbumsScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  BlocProvider.of<AlbumCubit>(context).fetchAllAlbums();
+                  BlocProvider.of<AlbumCubit>(context).add(FetchAllAlbums());
                 },
                 icon: const Icon(Icons.upload))
           ],
         ),
         body: BlocConsumer<AlbumCubit, AlbumState>(
           builder: (context, state) {
-            if (state is InitialAlbumState) {
+            if (state is InitialAlbumState)
+            {
               return const Center(
                 child: Text("Hali data yo'q"),
               );
@@ -62,10 +64,15 @@ class AlbumsScreen extends StatelessWidget {
             }
             return const SizedBox();
           },
+          buildWhen: (oldState, newState){
+            return true;//newState is LoadAlbumsInFailure;
+          },
           listener: (context, state) {
-            if (state is LoadAlbumsInProgress) {
-              MyUtils.getMyToast(message: "Loading in progress...");
-            }
+            print("TTTT");
+            MyUtils.getMyToast(message: "Loading in progress...");
+          },
+          listenWhen: (oldState, newState){
+            return oldState is LoadAlbumsInProgress;
           },
         ));
   }
