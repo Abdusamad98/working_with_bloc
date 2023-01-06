@@ -1,8 +1,6 @@
 abstract class CalculatorState {}
 
-class InitialState extends CalculatorState {
-
-}
+class InitialState extends CalculatorState {}
 
 class AdditionState extends CalculatorState {
   AdditionState(this.additionResult);

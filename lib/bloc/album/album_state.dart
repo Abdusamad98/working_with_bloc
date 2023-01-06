@@ -4,6 +4,7 @@ abstract class AlbumState {}
 
 class InitialAlbumState extends AlbumState {}
 
+// -------  Fetch All Albums States ------
 class LoadAlbumsInProgress extends AlbumState {}
 
 class LoadAlbumsInSuccess extends AlbumState {
@@ -19,5 +20,18 @@ class LoadAlbumsInFailure extends AlbumState {
 }
 
 
+// ------- Fetch Single Album States ------
 
+class LoadAlbumInProgress extends AlbumState {}
 
+class LoadAlbumInSuccess extends AlbumState {
+  LoadAlbumInSuccess({required this.album});
+
+  final Album album;
+}
+
+class LoadAlbumInFailure extends AlbumState {
+  LoadAlbumInFailure({required this.errorText});
+
+  final String errorText;
+}

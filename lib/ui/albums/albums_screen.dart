@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:working_with_bloc/bloc/album/album_cubit.dart';
 import 'package:working_with_bloc/bloc/album/album_state.dart';
+import 'package:working_with_bloc/ui/albums/single_album_screen.dart';
 import 'package:working_with_bloc/utils/my_utils.dart';
 
 class AlbumsScreen extends StatelessWidget {
@@ -36,6 +37,16 @@ class AlbumsScreen extends StatelessWidget {
                 children: List.generate(
                   state.albums.length,
                   (index) => ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SingleAlbumScreen(
+                            id: state.albums[index].id,
+                          ),
+                        ),
+                      );
+                    },
                     title: Text(
                       state.albums[index].title,
                     ),

@@ -22,4 +22,19 @@ class AlbumCubit extends Cubit<AlbumState> {
       emit(LoadAlbumsInFailure(errorText: myResponse.error));
     }
   }
+
+
+
+  fetchSingleAlbum(int id) async {
+      //loading
+    emit(LoadAlbumInProgress());
+    MyResponse myResponse = await albumRepos.getSingleAlbumById(id);
+    if (myResponse.error.isEmpty) {
+      //success
+      emit(LoadAlbumInSuccess(album: myResponse.data));
+    } else {
+      //error
+      emit(LoadAlbumInFailure(errorText: myResponse.error));
+    }
+  }
 }
