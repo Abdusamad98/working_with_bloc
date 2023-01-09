@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:working_with_bloc/bloc/album/album_cubit.dart';
-import 'package:working_with_bloc/bloc/album/album_event.dart';
-import 'package:working_with_bloc/bloc/album/album_state.dart';
 import 'package:working_with_bloc/data/repositories/album_repo.dart';
+import 'package:working_with_bloc/ui/single_album/bloc/single_album_bloc.dart';
+import 'package:working_with_bloc/ui/single_album/bloc/single_album_event.dart';
+import 'package:working_with_bloc/ui/single_album/bloc/single_album_state.dart';
 
 class SingleAlbumScreen extends StatelessWidget {
   const SingleAlbumScreen({Key? key, required this.id}) : super(key: key);
@@ -12,16 +12,16 @@ class SingleAlbumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AlbumCubit>(
+    return BlocProvider<SingleAlbumBloc>(
       create: (context) =>
-          AlbumCubit(context.read<AlbumRepos>())..add(FetchSingleAlbum(id: id)),
+      SingleAlbumBloc(context.read<AlbumRepos>())..add(FetchSingleAlbum(id: id)),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Deatiled Page"),
         ),
-        body: BlocBuilder<AlbumCubit, AlbumState>(builder: (context, state) {
+        body: BlocBuilder<SingleAlbumBloc, SingleAlbumState>(builder: (context, state) {
           // context.read<AlbumCubit>().fetchSingleAlbum(id);
-          if (state is InitialAlbumState) {
+          if (state is InitialSingleAlbumState) {
             return const Center(
               child: Text("Hali data yo'q"),
             );

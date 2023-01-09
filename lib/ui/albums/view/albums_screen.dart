@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:working_with_bloc/bloc/album/album_cubit.dart';
-import 'package:working_with_bloc/bloc/album/album_event.dart';
-import 'package:working_with_bloc/bloc/album/album_state.dart';
-import 'package:working_with_bloc/ui/albums/single_album_screen.dart';
+import 'package:working_with_bloc/data/repositories/album_repo.dart';
+import 'package:working_with_bloc/ui/albums/bloc/album_bloc.dart';
+import 'package:working_with_bloc/ui/albums/bloc/album_event.dart';
+import 'package:working_with_bloc/ui/albums/bloc/album_state.dart';
+import 'package:working_with_bloc/ui/single_album/view/single_album_screen.dart';
 import 'package:working_with_bloc/utils/my_utils.dart';
 
 class AlbumsScreen extends StatelessWidget {
@@ -12,21 +13,15 @@ class AlbumsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //2 BlocProvider.of<AlbumCubit>(context).fetchAllAlbums();
-    return Scaffold(
+    return BlocProvider(
+      create: (context) => AlbumsBloc(context.read<AlbumRepos>())..add(FetchAllAlbums()),
+      child: Scaffold(
         appBar: AppBar(
           title: const Text("All Albums"),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  BlocProvider.of<AlbumCubit>(context).add(FetchAllAlbums());
-                },
-                icon: const Icon(Icons.upload))
-          ],
         ),
-        body: BlocConsumer<AlbumCubit, AlbumState>(
+        body: BlocConsumer<AlbumsBloc, AlbumsState>(
           builder: (context, state) {
-            if (state is InitialAlbumState)
-            {
+            if (state is InitialAlbumState) {
               return const Center(
                 child: Text("Hali data yo'q"),
               );
@@ -64,16 +59,18 @@ class AlbumsScreen extends StatelessWidget {
             }
             return const SizedBox();
           },
-          buildWhen: (oldState, newState){
-            return true;//newState is LoadAlbumsInFailure;
+          buildWhen: (oldState, newState) {
+            return true; //newState is LoadAlbumsInFailure;
           },
           listener: (context, state) {
             print("TTTT");
             MyUtils.getMyToast(message: "Loading in progress...");
           },
-          listenWhen: (oldState, newState){
+          listenWhen: (oldState, newState) {
             return oldState is LoadAlbumsInProgress;
           },
-        ));
+        ),
+      ),
+    );
   }
 }

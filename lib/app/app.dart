@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:working_with_bloc/bloc/album/album_cubit.dart';
-import 'package:working_with_bloc/bloc/album/album_event.dart';
 import 'package:working_with_bloc/bloc/calculator/calculator_cubit.dart';
 import 'package:working_with_bloc/bloc/counter/counter_cubit.dart';
 import 'package:working_with_bloc/data/api_service/api_service.dart';
 import 'package:working_with_bloc/data/repositories/album_repo.dart';
-import 'package:working_with_bloc/ui/albums/albums_screen.dart';
+import 'package:working_with_bloc/ui/albums/view/albums_screen.dart';
+import 'package:working_with_bloc/ui/text_editor/view/text_editor_screen.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -29,10 +28,6 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (context) => CalculatorCubit(),
           ),
-          BlocProvider(
-            create: (context) =>
-                AlbumCubit(context.read<AlbumRepos>())..add(FetchAllAlbums()),
-          ),
         ],
         child: MyApp(),
       ),
@@ -52,7 +47,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AlbumsScreen(),
+      home: TextEditorScreen(),
     );
   }
 }
