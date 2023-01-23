@@ -30,7 +30,6 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (context) => CalculatorCubit(),
           ),
-
           BlocProvider(
             create: (context) => SingleStateBloc(),
           ),
