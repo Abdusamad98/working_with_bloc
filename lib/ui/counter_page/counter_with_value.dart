@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:working_with_bloc/bloc/counter/counter_cubit.dart';
+import 'package:working_with_bloc/cubit/counter/counter_cubit.dart';
 
 class CounterPageValue extends StatelessWidget {
   const CounterPageValue({Key? key, required this.counterCubit}) : super(key: key);

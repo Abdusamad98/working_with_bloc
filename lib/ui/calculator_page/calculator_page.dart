@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:working_with_bloc/bloc/calculator/calculator_cubit.dart';
-import 'package:working_with_bloc/bloc/calculator/calculator_state.dart';
+import 'package:working_with_bloc/cubit/calculator/calculator_cubit.dart';
+import 'package:working_with_bloc/cubit/calculator/calculator_state.dart';
 
 class CalculatorPage extends StatelessWidget {
   const CalculatorPage({Key? key}) : super(key: key);
