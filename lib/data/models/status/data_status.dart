@@ -3,6 +3,7 @@ enum DataStatus {
   SUCCESS,
   ERROR,
   LOADING,
+  CARD_CREATED,
 }
 
 enum AuthState {

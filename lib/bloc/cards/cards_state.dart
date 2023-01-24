@@ -5,6 +5,7 @@ class CardsState extends Equatable {
   final String statusText;
   final List<CardModel> cards;
 
+
 const  CardsState({
     required this.status,
     required this.statusText,
