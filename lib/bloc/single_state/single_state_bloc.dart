@@ -27,3 +27,12 @@ class SingleStateBloc extends Bloc<SingleStateEvent, SingleState> {
         {emit(state.copyWith(successText: event.successText))});
   }
 }
+
+
+enum MyStatus{
+  ERROR,
+  SUCCESS,
+  LOADING,
+  PURE,
+}
+

@@ -9,6 +9,7 @@ class SingleStateView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<SingleStateBloc, SingleState>(
+
         builder: (context, state) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
