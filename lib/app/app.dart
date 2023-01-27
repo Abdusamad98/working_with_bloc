@@ -9,6 +9,7 @@ import 'package:working_with_bloc/ui/albums/view/albums_screen.dart';
 import 'package:working_with_bloc/ui/cards/cards_screen.dart';
 import 'package:working_with_bloc/ui/single_state_view/SingleStateView.dart';
 import 'package:working_with_bloc/ui/text_editor/view/text_editor_screen.dart';
+import 'package:working_with_bloc/ui/users/users_screen.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CardScreen(),
+      home: UsersScreen(),
     );
   }
 }

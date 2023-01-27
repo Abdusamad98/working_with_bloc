@@ -20,6 +20,8 @@ dependencies:
   equatable: ^2.0.5
   dio: ^4.0.6
   intl: ^0.18.0
+  sqflite: ^2.2.3
+  cached_network_image: ^3.2.3
 
 
 dev_dependencies:
