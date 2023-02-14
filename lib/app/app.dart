@@ -7,6 +7,7 @@ import 'package:working_with_bloc/data/api_service/api_service.dart';
 import 'package:working_with_bloc/data/repositories/album_repo.dart';
 import 'package:working_with_bloc/ui/albums/view/albums_screen.dart';
 import 'package:working_with_bloc/ui/cards/cards_screen.dart';
+import 'package:working_with_bloc/ui/isolate_api_call.dart';
 import 'package:working_with_bloc/ui/single_state_view/SingleStateView.dart';
 import 'package:working_with_bloc/ui/text_editor/view/text_editor_screen.dart';
 import 'package:working_with_bloc/ui/users/users_screen.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: UsersScreen(),
+      home: IsolateApiCall(),
     );
   }
 }

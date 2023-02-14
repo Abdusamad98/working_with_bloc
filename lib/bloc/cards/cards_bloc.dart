@@ -43,5 +43,9 @@ class CardsBloc extends Bloc<CardsEvent, CardsState> {
     });
   }
 
+  bool isLoading = false;
+
+  late Stream<String> myNameStream;
+
   final BankingRepository bankingRepository;
 }
